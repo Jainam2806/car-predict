@@ -2,7 +2,10 @@ from flask import Flask, render_template, request
 import pandas as pd
 import pickle
 import numpy as np
+import os
 # from flask_cors import CORS
+port = os.environ.get('PORT', 10000)
+PORT=10000
 
 model = pickle.load(open('Finalmodel102.pkl', 'rb'))
 car = pd.read_csv("cleaned_car.csv")
@@ -27,4 +30,4 @@ def predict():
     prediction = model.predict(pd.DataFrame([[car_model, company, year, kms_driven, fuel_type]], columns=['name', 'company', 'year', 'kms_driven', 'fuel_type']))
     return str(np.round(prediction[0],-2))
 if __name__ == "__main__":
-    app.run(debug = True, port=10000) 
+    app.run(port=port) 
