@@ -4,7 +4,7 @@ import pickle
 import numpy as np
 # from flask_cors import CORS
 
-model = pickle.load(open('Finalmodel.pkl', 'rb'))
+model = pickle.load(open('Finalmodel102.pkl', 'rb'))
 car = pd.read_csv("cleaned_car.csv")
 app = Flask(__name__)
 # cors = CORS(app)
